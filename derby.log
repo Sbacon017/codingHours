@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Apr 16 12:36:12 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0162-cf50-582a-000013588108 
+on database directory /home/sbacon017/eclipse-workspace/hourtracker/hoursdb with class loader java.net.URLClassLoader@5d130c3 
+Loaded from file:/home/sbacon017/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_162-8u162-b12-0ubuntu0.16.04.2-b12
+user.dir=/home/sbacon017/eclipse-workspace/hourtracker
+os.name=Linux
+os.arch=amd64
+os.version=4.13.0-38-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
