@@ -47,10 +47,10 @@ public class HourTracker {
 	//Get hours of gaming earned
 	public int getHoursEarned() {
 		if (getDifference() >= 0) {
-			return getDifference();
+			return getDifference()/RATIO;
 		}
 		else {
-			return Math.abs(getDifference());
+			return Math.abs(getDifference())/RATIO;
 		}
 	}
 	
