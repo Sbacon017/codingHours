@@ -7,8 +7,9 @@ package trackinghours.hourtracker;
  */
 public class HourTracker {
 	
-	Hours codingHours, gamingHours;
+	Hours codingHours, gamingHours, auxHours;
 	final int RATIO = 2;
+	final int AUXRATIO = 4;
 	HoursFactory hourFact = new HoursFactory();
 	
 	/*
@@ -19,13 +20,14 @@ public class HourTracker {
 		Hours[] hourArray = hourFact.getHourObjects();
 		this.codingHours = hourArray[0];
 		this.gamingHours = hourArray[1];
+		this.auxHours = hourArray[2];
 	}
 	
 	/*
 	 * Saves hours back to SQL
 	 */
 	public void saveHours() {
-		Hours[] hourArray = {codingHours, gamingHours};
+		Hours[] hourArray = {codingHours, gamingHours, auxHours};
 		hourFact.saveHours(hourArray);
 	}
 	
@@ -39,19 +41,17 @@ public class HourTracker {
 		this.gamingHours.setHours(getGamingHours() + numhours);
 	}
 	
-	//Get difference in coding hours
-	public int getDifference() {
-		return getCodingHours() - getGamingHours()*RATIO;
+	//Add new hours spent reading/learning about code
+	public void addAuxHours(int numHours) {
+		this.auxHours.setHours(getAuxHours() + numHours);
 	}
+	
+
 	
 	//Get hours of gaming earned
 	public int getHoursEarned() {
-		if (getDifference() >= 0) {
-			return getDifference()/RATIO;
-		}
-		else {
-			return Math.abs(getDifference())/RATIO;
-		}
+		int hoursEarned = getCodingHours()/RATIO + getAuxHours()/AUXRATIO - getGamingHours();
+		return hoursEarned;
 	}
 	
 	//Get gaming hours
@@ -64,6 +64,13 @@ public class HourTracker {
 		return this.codingHours.getHours();
 	}
 	
+	public int getAuxHours() {
+		return this.auxHours.getHours();
+	}
+	
+	public void instantiateAux() {
+		hourFact.instantiateAux();
+	}
 	
 	
 

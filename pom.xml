@@ -5,7 +5,7 @@
 
 	<groupId>trackinghours</groupId>
 	<artifactId>hourtracker</artifactId>
-	<version>1</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 
 	<name>hourtracker</name>

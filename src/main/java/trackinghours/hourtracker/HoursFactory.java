@@ -11,7 +11,7 @@ public class HoursFactory {
 	public Hours[] getHourObjects() {
 		
 		// Initialize the Hours Array
-		Hours[] hourObjects = new Hours[2];
+		Hours[] hourObjects = new Hours[3];
 		
 		try {
 			//Get the connection object
@@ -83,15 +83,19 @@ public class HoursFactory {
 		int codeTime = rs.getInt(2);
 		rs.next();
 		int gameTime = rs.getInt(2);
+		rs.next();
+		int auxTime = rs.getInt(2);
 		
 		
 		//Create HourObjects
 		Hours codeHours = new Hours(codeTime);
 		Hours gameHours = new Hours(gameTime);
+		Hours auxHours = new Hours(auxTime);
 		
 		//Pop em in that array
 		hourObjects[0] = codeHours;
 		hourObjects[1] = gameHours;
+		hourObjects[2] = auxHours;
 		
 	}
 	
@@ -102,6 +106,8 @@ public class HoursFactory {
 					+ hourArray[0].getHours() + " WHERE ID = 1");
 			stmt.executeUpdate("UPDATE hourstable SET HOURS = " 
 					+ hourArray[1].getHours() + " WHERE ID = 2");
+			stmt.executeUpdate("UPDATE hourstable SET HOURS = " 
+					+ hourArray[2].getHours() + " WHERE ID = 3");
 			
 			stmt.close();
 			conn.close();
@@ -110,6 +116,17 @@ public class HoursFactory {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void instantiateAux() {
+		try {
+		Statement stmt = this.conn.createStatement();
+		stmt.executeUpdate("INSERT INTO HOURSTABLE VALUES (3, 0)");
+		stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	

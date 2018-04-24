@@ -27,22 +27,23 @@ public class HourTrackerUI {
 		System.out.println();
 		System.out.println("1. Add coding hours.");
 		System.out.println("2. Add gaming hours.");
-		System.out.println("3. Quit.");
+		System.out.println("3. Add auxilliary hours.");
+		System.out.println("4. Quit.");
 		System.out.println();
 	}
 	
 	//Prints analysis of hours used.
 	public void printHourAnalysis() {
-		int difference = hourTracker.getDifference();
 		int hoursEarned = hourTracker.getHoursEarned();
 		int codingHours = hourTracker.getCodingHours();
 		int gamingHours = hourTracker.getGamingHours();
-		printStats(codingHours, gamingHours);
-		if (difference > 0) {
+		int auxHours = hourTracker.getAuxHours();
+		printStats(codingHours, gamingHours, auxHours);
+		if (hoursEarned > 0) {
 			System.out.println();
 			System.out.println("Well done. You've earned " + hoursEarned + " hours of gaming.");
 		}
-		else if (difference == 0) {
+		else if (hoursEarned == 0) {
 			System.out.println("Well, you don't currently have any gaming hours available.");
 		}
 		else {
@@ -52,9 +53,10 @@ public class HourTrackerUI {
 	}
 	
 	//Prints stats
-	public void printStats(int codingHours, int gamingHours) {
+	public void printStats(int codingHours, int gamingHours, int auxHours) {
 		System.out.println();
 		System.out.println("You have coded for: " + codingHours + " hours so far.");
+		System.out.println("You have done auxilliary activities for " + auxHours + " hours so far.");
 		System.out.println("You have gamed for: " + gamingHours + " hours so far");
 		System.out.println();
 		
@@ -82,6 +84,11 @@ public class HourTrackerUI {
 				hourTracker.addGamingHours(numHours);
 				break;
 			case '3':
+				System.out.println();
+				System.out.println("Enter the number of additional auxilliary hours: ");
+				numHours = keyboard.nextInt();
+				hourTracker.addAuxHours(numHours);
+			case '4':
 				notDone = false;
 				break;
 			default:
