@@ -26,7 +26,7 @@ public class HourTrackerUI {
 		System.out.println();
 		System.out.println();
 		System.out.println("1. Add coding hours.");
-		System.out.println("2. Add gaming hours.");
+		System.out.println("2. Add leisure hours.");
 		System.out.println("3. Add auxilliary hours.");
 		System.out.println("4. Quit.");
 		System.out.println();
@@ -41,10 +41,10 @@ public class HourTrackerUI {
 		printStats(codingHours, gamingHours, auxHours);
 		if (hoursEarned > 0) {
 			System.out.println();
-			System.out.println("Well done. You've earned " + hoursEarned + " hours of gaming.");
+			System.out.println("Well done. You've earned " + hoursEarned + " hours of leisure.");
 		}
 		else if (hoursEarned == 0) {
-			System.out.println("Well, you don't currently have any gaming hours available.");
+			System.out.println("Well, you don't currently have any leisure hours available.");
 		}
 		else {
 			System.out.println("You NAUGHTY BOY! You currently owe: " + hoursEarned + " hours!");
@@ -55,9 +55,9 @@ public class HourTrackerUI {
 	//Prints stats
 	public void printStats(int codingHours, int gamingHours, int auxHours) {
 		System.out.println();
-		System.out.println("You have coded for: " + codingHours + " hours so far.");
-		System.out.println("You have done auxilliary activities for " + auxHours + " hours so far.");
-		System.out.println("You have gamed for: " + gamingHours + " hours so far");
+		System.out.println("Number of hours spent coding: " + codingHours);
+		System.out.println("Number of hours spent on auxilliary activities: " + auxHours);
+		System.out.println("Number of hours spent on leisure activities: " + gamingHours);
 		System.out.println();
 		
 	}
@@ -79,7 +79,7 @@ public class HourTrackerUI {
 				break;
 			case '2':
 				System.out.println();
-				System.out.println("Enter the number of additional gaming hours: ");
+				System.out.println("Enter the number of additional leisure hours: ");
 				numHours = keyboard.nextInt();
 				hourTracker.addGamingHours(numHours);
 				break;
@@ -88,6 +88,7 @@ public class HourTrackerUI {
 				System.out.println("Enter the number of additional auxilliary hours: ");
 				numHours = keyboard.nextInt();
 				hourTracker.addAuxHours(numHours);
+				break;
 			case '4':
 				notDone = false;
 				break;
